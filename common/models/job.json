@@ -1,0 +1,47 @@
+{
+  "name": "Job",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "recruiter": {
+      "type": "Recruiter"
+    },
+    "company": {
+      "type": "Company"
+    },
+    "title": {
+      "type": "string"
+    },
+    "compensation": {
+      "type": "Compensation"
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "contacts": {
+      "type": "hasMany",
+      "model": "Contact",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

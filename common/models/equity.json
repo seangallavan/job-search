@@ -1,0 +1,21 @@
+{
+  "name": "Equity",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": false,
+    "minPercent": {
+      "type": "number"
+    },
+    "maxPercent": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

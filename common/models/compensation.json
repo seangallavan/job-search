@@ -1,0 +1,24 @@
+{
+  "name": "Compensation",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": false,
+    "salary": {
+      "type": "Salary"
+    },
+    "equity": {
+      "type": "Equity"
+    },
+    "other": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

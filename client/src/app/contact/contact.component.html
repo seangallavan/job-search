@@ -1,0 +1,50 @@
+<div class="container mt-2">
+  <button type="button" (click)="edit()" [hidden]="isEditable" class="btn btn-info btn-sm" style="float:right">Edit</button>
+  <form ngSubmit="save()">
+    <div class="row">
+      <div class="col form-group">
+        <small><label for="jobId" class="mb-0">Type</label></small>
+        <select class="form-control form-control-sm" [(ngModel)]="selectedJobId" id="jobId" name="jobId" [disabled]="!isEditable">
+          <option *ngFor="let job of allJobs" value="{{job.company.id}}">{{job.company.name}} | {{job.title}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col form-group">
+        <small><label for="person.name" class="mb-0">Name</label></small>
+        <input [(ngModel)]="contact.person.name" id="person.name" name="person.name" type="text"
+               placeholder="Name" class="form-control form-control-sm" [disabled]="!isEditable"/>
+      </div>
+      <div class="col form-group">
+        <small><label for="person.company" class="mb-0">Company</label></small>
+        <input [(ngModel)]="contact.person.company" id="person.company" name="person.company" type="text"
+               placeholder="Company" class="form-control form-control-sm" [disabled]="!isEditable" />
+      </div>
+      <div class="col form-group">
+        <small><label for="person.title" class="mb-0">Title</label></small>
+        <input [(ngModel)]="contact.person.title" id="person.title" name="person.title" type="text"
+               placeholder="Title" class="form-control form-control-sm" [disabled]="!isEditable" />
+      </div>
+      <div class="col form-group">
+        <small><label for="person.title" class="mb-0">Type</label></small>
+        <select class="form-control form-control-sm" [(ngModel)]="contact.type" id="type" name="type" [disabled]="!isEditable">
+          <option>Phone</option>
+          <option>Skype</option>
+          <option>Email</option>
+          <option>In Person</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col form-group">
+        <small><label for="description" class="mb-0">Notes</label></small>
+                <textarea [(ngModel)]="contact.notes" id="notes" name="notes" type="text" rows="10"
+                          placeholder="Notes" class="form-control form-control-sm" [disabled]="!isEditable"></textarea>
+      </div>
+    </div>
+
+
+    <button type="submit" [hidden]="!isEditable" class="btn btn-primary btn-sm">Save</button>
+  </form>
+</div>

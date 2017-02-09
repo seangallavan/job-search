@@ -1,0 +1,121 @@
+<div class="container mxy-2">
+    <div style="float: right">
+        <button type="button" (click)="edit()" [hidden]="isEditable" class="btn btn-info btn-sm">Edit</button>
+    </div>
+    <form ngSubmit="save()">
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="company.name" class="mb-0">Company Name</label></small>
+                <input [(ngModel)]="job.company.name" id="company.name" name="company.name" type="text"
+                       placeholder="Company Name" class="form-control form-control-sm" [disabled]="!isEditable"/>
+            </div>
+            <div class="col form-group">
+                <small><label for="title" class="mb-0">Title</label></small>
+                <input [(ngModel)]="job.title" id="title" name="title" type="text"
+                       placeholder="Title" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+            <div class="col form-group">
+                <small><label for="location" class="mb-0">Location</label></small>
+                <input [(ngModel)]="job.location" id="location" name="location" type="text"
+                       placeholder="Location" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="company.description" class="mb-0">Company Description</label></small>
+                <input [(ngModel)]="job.company.description" id="company.description" name="company.description" type="text"
+                       placeholder="Company Description" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="recruiter.name" class="mb-0">Recruiter Name</label></small>
+                <input [(ngModel)]="job.recruiter.name" id="recruiter.name" name="recruiter.name" type="text"
+                       placeholder="Recruiter Name" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+            <div class="col form-group">
+                <small><label for="recruiter.company" class="mb-0">Recruiter Company</label></small>
+                <input [(ngModel)]="job.recruiter.company" id="recruiter.company" name="recruiter.company" type="text"
+                       placeholder="Recruiter Company" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="url" class="mb-0">URL</label></small>
+                <input [(ngModel)]="job.url" id="url" name="url" type="url"
+                       placeholder="URL" class="form-control form-control-sm" [disabled]="!isEditable" />
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label class="mb-0">Annual Salary</label></small>
+                <div class="form-inline">
+                    <label class="sr-only" for="compensation.salary.minAnnual">Minimum Annual</label>
+                    <div class="input-control-group form-inline mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon form-control-sm">$</div>
+                        <input [(ngModel)]="job.compensation.salary.minAnnual" id="compensation.salary.minAnnual"
+                               name="compensation.salary.minAnnual" type="text" cols="10" class="width121 form-control form-control-sm "
+                               [disabled]="!isEditable"/>
+                    </div>
+                    -&nbsp;&nbsp;
+                    <label class="sr-only" for="compensation.salary.maxAnnual">Maximum Annual</label>
+                    <div class="input-control-group form-inline mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon form-control-sm">$</div>
+                        <input [(ngModel)]="job.compensation.salary.maxAnnual" id="compensation.salary.maxAnnual"
+                               name="compensation.salary.maxAnnual" type="text" cols="10" class="width121 form-control form-control-sm"
+                               [disabled]="!isEditable"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col form-group">
+                <small><label class="mb-0">Equity</label></small>
+                <div class="form-inline">
+                    <label class="sr-only" for="compensation.equity.minPercent">Minimum Annual</label>
+                    <div class="input-control-group form-inline mb-2 mr-sm-2 mb-sm-0">
+                        <input [(ngModel)]="job.compensation.equity.minPercent" id="compensation.equity.minPercent"
+                               name="compensation.equity.minPercent" type="text" cols="10" class="width121 form-control form-control-sm"
+                               [disabled]="!isEditable"/>
+                        <div class="input-group-addon form-control-sm">%</div>
+                    </div>
+                    -&nbsp;&nbsp;
+                    <label class="sr-only" for="compensation.equity.maxPercent">Maximum Annual</label>
+                    <div class="input-control-group form-inline mb-2 mr-sm-2 mb-sm-0">
+                        <input [(ngModel)]="job.compensation.equity.maxPercent" id="compensation.equity.maxPercent"
+                               name="compensation.equity.maxPercent" type="text" cols="10" class="width121 form-control form-control-sm"
+                               [disabled]="!isEditable"/>
+                        <div class="input-group-addon form-control-sm">%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="compensation.other" class="mb-0">Other Compensation</label></small>
+                <input [(ngModel)]="job.compensation.other" id="compensation.other" name="compensation.other" type="text"
+                       placeholder="Other Compensation" class="form-control form-control-sm"  [disabled]="!isEditable"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <small><label for="description" class="mb-0">Description</label></small>
+                <textarea [(ngModel)]="job.description" id="description" name="description" type="text" rows="10"
+                          placeholder="Description" class="form-control form-control-sm" [disabled]="!isEditable"></textarea>
+            </div>
+        </div>
+
+        <button type="submit" (click)="save()" [hidden]="!isEditable" class="btn btn-primary btn-sm">Save</button>
+
+        <div *ngFor="let contact of job.contacts">
+            <hr />
+            <contact id="'contact_' + contact.id" [contactInstance]="contact" (onSave)="save()" class="btn btn-primary btn-sm"></contact>
+        </div>
+    </form>
+</div>

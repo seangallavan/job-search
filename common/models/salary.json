@@ -1,0 +1,21 @@
+{
+  "name": "Salary",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": false,
+    "minAnnual": {
+      "type": "number"
+    },
+    "maxAnnual": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

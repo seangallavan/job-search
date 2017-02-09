@@ -1,0 +1,51 @@
+{
+  "id": "ljdsflkjsflkjsflkjsflkjsflksjflkj",
+  "recruiter": {
+    "name": "Jen Howser",
+    "company": "Talener"
+  },
+  "company": {
+    "name": "Jetbarins",
+    "description": "IDE Software Company"
+  },
+  "title": "CTO",
+  "compensation": {
+    "salary": {
+      "minAnnual": 180000,
+      "maxAnnual": 200000
+    },
+    "equity": {
+      "minPercent": 5,
+      "maxPercent": 15
+    },
+    "other": "$10k signing bonus"
+  },
+  "location": "San Francisco Bay Area",
+  "description": "Looking for experienced CTO\nPython Knowledge Essential",
+  "notes": "planning to double number of engineers in next year\nNo additional management hires beyond CTO",
+  "url": "http://hotjbos.com/coolCTOgig",
+  "contacts": [
+    {
+      "person": {
+        "name": "Jen Howser",
+        "company": "Talener",
+        "title": "Recruiter"
+      },
+      "notes": "see main job notes",
+      "createdAt": "2004-02-12T15:19:21+06:00",
+      "updatedAt": null
+    },
+    {
+      "person": {
+        "name": "Jimmy Love",
+        "company": "Jetbrains",
+        "title": "CEO"
+      },
+      "notes": "Looking for a CTO immediately\nPrefer to pay equity over salary",
+      "createdAt": "2004-02-12T15:19:21+06:00",
+      "updatedAt": null
+    }
+  ],
+  "createdAt": "2004-02-12T15:19:21+06:00",
+  "updatedAt": null
+}

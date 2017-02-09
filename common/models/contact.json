@@ -1,0 +1,35 @@
+{
+  "name": "Contact",
+  "base": "Model",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "person": {
+      "type": "Person"
+    },
+    "type": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "job": {
+      "type": "belongsTo",
+      "model": "Job",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
