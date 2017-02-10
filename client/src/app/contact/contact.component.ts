@@ -13,33 +13,21 @@ import { JobService } from '../job.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  @Input() contactInstance : Contact;
-  @Input() selecteJobId: any; //varies - a string in MongoDb, but a number in MySql for example
+  @Input() contactInstance : Contact = this.contactService.newContact();
+  @Input() jobId: any; //varies - a string in MongoDb, but a number in MySql for example
   @Input() isEditable: boolean;
-  @Output() onSave = new EventEmitter<boolean>();
+  @Output() reloadContacts : EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private jobService: JobService, private contactService: ContactService, private route: ActivatedRoute) { }
 
   allJobs:Job[] = [];
-  contact: Contact;
 
   ngOnInit() {
-    //Load the contact
-    this.route.params
-        .switchMap((params: Params) => {
-          if(params['id']) {
-            this.isEditable = false;
-            return this.contactService.findById(params['id']);
-          } else {
-            this.isEditable = true;
-            return Observable.of(this.contactService.newContact());
-          }
-        })
-        .subscribe(contactInstance => this.contact = contactInstance);
-
-    //Populate the company/title dropdown
-    this.jobService.findAll()
-      .subscribe(jobs => this.allJobs = jobs);
+   //Populate the company/title dropdown
+    if(!this.jobId) {
+      this.jobService.findAll()
+          .subscribe(jobs => this.allJobs = jobs);
+    }
   }
 
   edit() {
@@ -47,6 +35,19 @@ export class ContactComponent implements OnInit {
   }
 
   save() {
-    this.onSave.emit(true);
+    this.isEditable = false;
+
+    if(this.contactInstance.id) {
+      this.contactService.update(this.jobId, this.contactInstance)
+          .subscribe(contact => this.contactInstance = contact);
+    } else {
+      this.contactService.create(this.jobId, this.contactInstance)
+          .subscribe(contact => this.contactInstance = contact);
+    }
+  }
+
+  delete() {
+    this.contactService.deleteById(this.jobId, this.contactInstance.id)
+      .subscribe(() => this.reloadContacts.emit(true));
   }
 }

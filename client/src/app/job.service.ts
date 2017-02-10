@@ -1,3 +1,5 @@
+import { Http, Headers, Request } from '@angular/http';
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -12,11 +14,14 @@ import { Recruiter } from './shared/sdk/models/Recruiter';
 import { Salary } from './shared/sdk/models/Salary';
 
 import { JobApi } from './shared/sdk/services/custom/Job';
+import { ContactApi } from './shared/sdk/services/custom/Contact';
+
+import { LoopBackConfig } from './shared/sdk/lb.config';
 
 @Injectable()
 export class JobService {
 
-  constructor(private jobApi: JobApi) { }
+  constructor(private jobApi: JobApi, private contactApi: ContactApi, private http : Http) { }
 
   newJob() : Job {
     let job = new Job();
@@ -49,7 +54,36 @@ export class JobService {
     return this.jobApi.replaceById(job.id, job);
   }
 
-  search(term: string) {
+  search(term: string) : Observable<Job[]> {
     return this.jobApi.find({"where": {"company.name": {"like": term, "options": "i"}}});
+  }
+
+  getContacts(job: Job) : Observable<Contact[]> {
+    let method = 'GET';
+
+    let url = [
+        LoopBackConfig.getPath(),
+        LoopBackConfig.getApiVersion(),
+        'Jobs',
+        job.id,
+        'contacts'
+      ].join('/');
+
+    let headers: Headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let request: Request = new Request({
+      headers : headers,
+      method  : method,
+      url     : url
+      //search  : Object.keys(urlParams).length > 0
+      //    ? this.searchParams.getURLSearchParams() : null,
+      //body    : body ? JSON.stringify(body) : undefined
+    });
+    return <Observable<Contact[]>> this.http.request(request)
+      .map((res: any) => (res.text() != "" ? res.json() : {}))
+      .map((datum: Contact[]) => datum.map((data: Contact) => Contact.factory(data)));
+  //      .catch((e) => console.error(e));
+
   }
 }

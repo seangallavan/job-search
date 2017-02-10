@@ -91,7 +91,7 @@ export abstract class BaseLoopBackApi {
       headers.append('where', JSON.stringify(urlParams.where));
       delete urlParams.where;
     }
-   this.searchParams.setJSON(urlParams);
+    this.searchParams.setJSON(urlParams);
     let request: Request = new Request({
       headers : headers,
       method  : method,

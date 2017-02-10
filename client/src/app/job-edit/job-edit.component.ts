@@ -13,8 +13,10 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./job-edit.component.css']
 })
 export class JobEditComponent implements OnInit {
-  job: Job = this.jobService.newJob();
+    job: Job = this.jobService.newJob();
+    contacts: Contact[] = <Contact[]>[this.contactService.newContact()];
     isEditable: boolean;
+    displayNewContact: boolean;
 
   constructor(private jobService: JobService, private contactService: ContactService, private route: ActivatedRoute) { }
 
@@ -29,14 +31,20 @@ export class JobEditComponent implements OnInit {
             return Observable.of(this.jobService.newJob());
           }
         })
-        .subscribe(jobInstance => this.job = jobInstance);
-  }
+        .subscribe(jobInstance => {
+            this.job = jobInstance;
+            this.jobService.getContacts(this.job)
+                .subscribe(contacts => {
+                    this.contacts = contacts;
+                });
+            });
+    }
 
     edit() {
         this.isEditable = true;
     }
 
-  save() {
+    save() {
       if(this.job.id) {
           this.jobService.update(this.job)
               .subscribe(() =>{ console.log('updated jobId: ' + this.job.id) });
@@ -45,12 +53,17 @@ export class JobEditComponent implements OnInit {
             .subscribe(jobInstance => this.job = jobInstance);
       }
       this.isEditable = false;
-  }
+    }
 
-    newContact() {
-        let newContact: Contact = this.contactService.newContact();
-        newContact.id = this.job.contacts.length;
-        this.job.contacts.push(newContact);
-        //$('#contact_' + newContact.id).isEditable = true;
+    newContact() : void {
+        this.displayNewContact = true;
+    }
+
+    reloadContacts() : void {
+        this.jobService.getContacts(this.job)
+            .subscribe(contacts => {
+                this.contacts = contacts;
+                this.displayNewContact = false;
+            });
     }
 }
