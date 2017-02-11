@@ -25,12 +25,26 @@ export class JobService {
 
   newJob() : Job {
     let job = new Job();
+    job.title = undefined;
+    job.location = undefined;
+    job.description = undefined;
     job.company = new Company();
+    job.company.name = undefined;
+    job.company.description = undefined;
     job.recruiter = new Recruiter();
+    job.recruiter.name = undefined;
+    job.recruiter.company = undefined;
     job.compensation = new Compensation();
     job.compensation.salary = new Salary();
+    job.compensation.salary.minAnnual = undefined;
+    job.compensation.salary.maxAnnual = undefined;
     job.compensation.equity = new Equity();
+    job.compensation.equity.minPercent = undefined;
+    job.compensation.equity.maxPercent;
+    job.compensation.other = undefined;
     job.contacts = [];
+    job.createdAt = undefined;
+    job.updatedAt = undefined;
 
     return job;
   }

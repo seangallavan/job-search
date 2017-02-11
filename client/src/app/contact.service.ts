@@ -32,14 +32,6 @@ export class ContactService {
     ].join('/'), undefined, undefined, { contact }).map((data: Contact) => Contact.factory(data));
   }
 
-  findById(id: any) : Observable<Contact> {
-    return this.contactApi.findById(id);
-  }
-
-  findAll() : Observable<Contact[]> {
-    return this.contactApi.find();
-  }
-
   deleteById(jobId: any, contactId : any) : Observable<Contact> {
     return this.contactApi.request('DELETE', [
       LoopBackConfig.getPath(),
@@ -50,10 +42,6 @@ export class ContactService {
       contactId
     ].join('/'), undefined, undefined, undefined).map((data: Contact) => Contact.factory(data));
   }
-
-  //update(contact: Contact) : Observable<Contact> {
-  //  return this.contactApi.replaceById(contact.id, contact);
-  //}
 
   update(jobId: any, contact: Contact) : Observable<Contact> {
     let method = 'PUT';

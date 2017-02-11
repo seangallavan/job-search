@@ -5,27 +5,27 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { JobListComponent } from './job-list/job-list.component';
-import { JobDetailComponent } from './job-detail/job-detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { JobEditComponent } from './job-edit/job-edit.component';
 
 import { JobService } from './job.service';
 import { ContactService } from './contact.service';
+import { SearchComponent } from './search/search.component';
+import { ImportComponent } from './import/import.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { SDKBrowserModule } from './shared/sdk/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JobListComponent,
-    JobDetailComponent,
     ContactComponent,
     JobEditComponent,
-    SearchComponent
+    SearchComponent,
+    ImportComponent
   ],
   imports: [
     BrowserModule,

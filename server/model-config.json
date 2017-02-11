@@ -63,5 +63,9 @@
   "Job": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "upload": {
+    "dataSource": "storage",
+    "public": true
   }
 }

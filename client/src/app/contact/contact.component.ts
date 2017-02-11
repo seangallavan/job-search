@@ -48,6 +48,9 @@ export class ContactComponent implements OnInit {
 
   delete() {
     this.contactService.deleteById(this.jobId, this.contactInstance.id)
-      .subscribe(() => this.reloadContacts.emit(true));
+      .subscribe(() => {
+          this.reloadContacts.emit(true);
+          this.contactInstance = this.contactService.newContact();
+        });
   }
 }
