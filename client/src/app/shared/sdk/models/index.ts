@@ -8,5 +8,8 @@ export * from './Compensation';
 export * from './Person';
 export * from './Contact';
 export * from './Job';
+export * from './Upload';
+export * from './Mapping';
+export * from './Importer';
 export * from './BaseModels';
 export * from './FireLoopRef';

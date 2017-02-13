@@ -1,0 +1,20 @@
+{
+  "name": "importer",
+  "base": "Model",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": false,
+    "filename": {
+      "type": "string",
+      "required": true
+    },
+    "mappings": ["mapping"]
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

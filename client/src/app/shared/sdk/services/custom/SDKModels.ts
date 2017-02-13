@@ -9,6 +9,9 @@ import { Compensation } from '../../models/Compensation';
 import { Person } from '../../models/Person';
 import { Contact } from '../../models/Contact';
 import { Job } from '../../models/Job';
+import { Upload } from '../../models/Upload';
+import { Mapping } from '../../models/Mapping';
+import { Importer } from '../../models/Importer';
 
 export interface Models { [name: string]: any }
 
@@ -25,6 +28,9 @@ export class SDKModels {
     Person: Person,
     Contact: Contact,
     Job: Job,
+    Upload: Upload,
+    Mapping: Mapping,
+    Importer: Importer,
     
   };
 

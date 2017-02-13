@@ -40,7 +40,7 @@ export class JobService {
     job.compensation.salary.maxAnnual = undefined;
     job.compensation.equity = new Equity();
     job.compensation.equity.minPercent = undefined;
-    job.compensation.equity.maxPercent;
+    job.compensation.equity.maxPercent= undefined;
     job.compensation.other = undefined;
     job.contacts = [];
     job.createdAt = undefined;

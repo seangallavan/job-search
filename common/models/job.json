@@ -26,12 +26,6 @@
     },
     "url": {
       "type": "string"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
   },
   "validations": [],
@@ -41,6 +35,10 @@
       "model": "Contact",
       "foreignKey": ""
     }
+  },
+  "mixins": {
+    "Timestamp": true,
+    "DeleteAll": true
   },
   "acls": [],
   "methods": {}

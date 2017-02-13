@@ -14,13 +14,11 @@
     },
     "notes": {
       "type": "string"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
+  },
+  "mixins": {
+    "Timestamp": true,
+    "DeleteAll": true
   },
   "validations": [],
   "relations": {

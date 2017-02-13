@@ -10,6 +10,7 @@ import { JobEditComponent } from './job-edit/job-edit.component';
 
 import { JobService } from './job.service';
 import { ContactService } from './contact.service';
+import { ImportService } from './import.service';
 import { SearchComponent } from './search/search.component';
 import { ImportComponent } from './import/import.component';
 
@@ -35,7 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SDKBrowserModule.forRoot(),
     NgbModule.forRoot()
   ],
-  providers: [ JobService, ContactService ],
+  providers: [ JobService, ContactService, ImportService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

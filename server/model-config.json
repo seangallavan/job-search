@@ -67,5 +67,13 @@
   "upload": {
     "dataSource": "storage",
     "public": true
+  },
+  "mapping": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "importer": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }

@@ -57,6 +57,9 @@ import { CompensationApi } from './services/custom/Compensation';
 import { PersonApi } from './services/custom/Person';
 import { ContactApi } from './services/custom/Contact';
 import { JobApi } from './services/custom/Job';
+import { UploadApi } from './services/custom/Upload';
+import { MappingApi } from './services/custom/Mapping';
+import { ImporterApi } from './services/custom/Importer';
 /**
 * @module SDKBrowserModule
 * @description
@@ -97,6 +100,9 @@ export class SDKBrowserModule {
         PersonApi,
         ContactApi,
         JobApi,
+        UploadApi,
+        MappingApi,
+        ImporterApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }
