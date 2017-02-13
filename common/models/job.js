@@ -12,16 +12,26 @@ module.exports = function(Job) {
         let newObj = {};
 
         mappings = _.filter(mappings, mapping => mapping.source !== undefined && mapping.source !== '');
-console.log('mappings', mappings);
+
+
+
         csv()
             .fromFile(FILEPATH)
             .on('json',(jsonObj)=>{
-//console.log("jsonObj", jsonObj);
                 newObj = {};
                 _.each(mappings, (mapping) => {
-                    newObj[mapping.destination] = jsonObj[mapping.source];
+                    let parts = mapping.destination.split('.');
+                    let property = parts.pop();
+                    let obj = newObj;
+                    parts.forEach(part => {
+                        if(!obj[part]) {
+                            obj[part] = {};
+                            obj = obj[part];
+                        }
+                        obj[property] = jsonObj[mapping.source];
+                    });
                 });
-//console.log("newObj", newObj);
+
                 Job.create(newObj, (err, obj) => {
                     if(err) throw err;
                 });
@@ -29,18 +39,6 @@ console.log('mappings', mappings);
             .on('done',(error)=>{
                 cb(null, JSON.stringify({response: 'Success!'}));
             });
-
-        //fs.readFile(FILEPATH + '/' + filename, 'utf-8', function(err, data) {
-        //    if(err) {
-        //        throw err;
-        //    }
-        //    parse(data, {}, function(err, csvData) {
-        //        if(err) {
-        //            throw err;
-        //        }
-        //
-        //    });
-        //});
     }
 
     Job.remoteMethod('import', {
