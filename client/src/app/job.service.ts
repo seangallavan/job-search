@@ -49,6 +49,17 @@ export class JobService {
     return job;
   }
 
+  makeDeep(job: Job) : Job {
+    job.company = job.company || new Company();
+    job.recruiter = job.recruiter || new Recruiter();
+    job.compensation = job.compensation || new Compensation();
+    job.compensation.salary = job.compensation.salary || new Salary();
+    job.compensation.equity = job.compensation.equity || new Equity();
+    job.contacts = job.contacts || [];
+
+    return job;
+  }
+
   create(job: Job) : Observable<Job> {
     return this.jobApi.create(job);
   }

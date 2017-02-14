@@ -16,7 +16,7 @@ export class JobEditComponent implements OnInit {
     job: Job = this.jobService.newJob();
     contacts: Contact[] = <Contact[]>[this.contactService.newContact()];
     isEditable: boolean;
-    displayNewContact: boolean;
+    displayNewContact: boolean = false;
 
   constructor(private jobService: JobService, private contactService: ContactService, private route: ActivatedRoute) { }
 
@@ -24,15 +24,15 @@ export class JobEditComponent implements OnInit {
     this.route.params
         .switchMap((params: Params) => {
           if(params['id']) {
-              this.isEditable = false;
+                this.isEditable = false;
             return this.jobService.findById(params['id']);
           } else {
-              this.isEditable = true;
-            return Observable.of(this.jobService.newJob());
+                this.isEditable = true;
+                return Observable.of(this.jobService.newJob());
           }
         })
         .subscribe(jobInstance => {
-            this.job = jobInstance;
+            this.job = this.jobService.makeDeep(jobInstance);
             this.jobService.getContacts(this.job)
                 .subscribe(contacts => {
                     this.contacts = contacts;

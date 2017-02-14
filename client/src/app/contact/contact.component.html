@@ -1,14 +1,18 @@
-<div class="container mt-2">
-  <div style="text-align: right" class="mb-2">
-    <button type="button" (click)="edit()" *ngIf="!isEditable" class="btn btn-info btn-sm">Edit</button>
-    <button type="button" (click)="delete()" *ngIf="!isEditable" class="btn btn-info btn-sm">Delete</button>
+<!--<div class="container mxy-2">-->
+  <div class="row">
+    <div class="col">
+      <div style="text-align: right">
+        <button type="button" (click)="edit()" *ngIf="!isEditable" class="btn btn-info btn-sm">Edit</button>
+        <button type="button" (click)="delete()" *ngIf="!isEditable" class="btn btn-info btn-sm">Delete</button>
+      </div>
+    </div>
   </div>
-  <!--<form ngSubmit="save()">-->
-    <div class="row">
-      <div *ngIf="!jobId" class="col form-group">
+  <!--&lt;!&ndash;<form ngSubmit="save()">&ndash;&gt;-->
+    <div *ngIf="!jobId" class="row">
+      <div class="col form-group">
         <small><label for="jobId" class="mb-0">Job Opportunity</label></small>
-        <select class="form-control form-control-sm" [(ngModel)]="selectedJobId" id="jobId" name="jobId" [disabled]="!isEditable">
-          <option *ngFor="let job of allJobs" value="{{job.company.id}}">{{job.company.name}} - {{job.title}}</option>
+        <select class="form-control form-control-sm" [(ngModel)]="jobId" id="jobId" name="jobId" [disabled]="!isEditable">
+          <option *ngFor="let job of allJobs" value="{{job.id}}">{{job.company.name}} - {{job.title}}</option>
         </select>
       </div>
     </div>
@@ -47,7 +51,10 @@
       </div>
     </div>
 
-
-    <button type="submit" *ngIf="isEditable" (click)="save()" class="btn btn-primary btn-sm">Save</button>
-  <!--</form>-->
-</div>
+    <div class="row">
+      <div class="col form-group">
+        <button type="submit" *ngIf="isEditable" (click)="save()" class="btn btn-primary btn-sm">Save</button>
+      </div>
+    </div>
+  <!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--</div>-->

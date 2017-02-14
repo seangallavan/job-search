@@ -27,6 +27,7 @@ export class ContactComponent implements OnInit {
     if(!this.jobId) {
       this.jobService.findAll()
           .subscribe(jobs => this.allJobs = jobs);
+      this.isEditable = true;
     }
   }
 
