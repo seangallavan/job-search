@@ -33,7 +33,7 @@ export class JobEditComponent implements OnInit {
         })
         .subscribe(jobInstance => {
             this.job = this.jobService.makeDeep(jobInstance);
-            this.jobService.getContacts(this.job)
+            this.contactService.getContacts(this.job.id)
                 .subscribe(contacts => {
                     this.contacts = contacts;
                 });

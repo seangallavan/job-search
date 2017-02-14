@@ -1,3 +1,10 @@
 .width121 {
     width : 121px !important;
 }
+
+.container {
+    background-color: #ccf7e2;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

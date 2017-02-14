@@ -120,19 +120,11 @@
             <button type="submit" (click)="save()" [hidden]="!isEditable" class="btn btn-primary btn-sm">Save</button>
         </div>
     </div>
-    <div class="row mb-3">
-        <div class="col">
-            <div *ngFor="let contact of contacts">
-                <contact id="'contact_' + contact.id" [contactInstance]="contact" [jobId]="job.id"
-                         (reloadContacts)="reloadContacts()" class="btn btn-primary btn-sm"></contact>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <contact id="'newContact" *ngIf="displayNewContact" [jobId]="job.id" [isEditable]="true"
-                     (reloadContacts)="reloadContacts()" class="btn btn-primary btn-sm"></contact>
-        </div>
-    </div>
-
 </div>
+<div *ngFor="let contact of contacts">
+    <contact id="'contact_' + contact.id" [contactInstance]="contact" [jobId]="job.id"
+             (reloadContacts)="reloadContacts()" ></contact>
+</div>
+<contact id="'newContact" *ngIf="displayNewContact" [jobId]="job.id" [isEditable]="true"
+         (reloadContacts)="reloadContacts()" class="newContact"></contact>
+

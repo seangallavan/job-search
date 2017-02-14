@@ -22,6 +22,11 @@ export class ContactService {
     return contact;
   }
 
+  makeDeep(contact: Contact) : Contact {
+    contact.person = contact.person || new Person();
+    return contact;
+  }
+
   create(jobId: any, contact: Contact) : Observable<Contact> {
     return this.contactApi.request('POST', [
       LoopBackConfig.getPath(),
@@ -44,36 +49,24 @@ export class ContactService {
   }
 
   update(jobId: any, contact: Contact) : Observable<Contact> {
-    let method = 'PUT';
-
-    let url = [
+    return this.contactApi.request('PUT', [
       LoopBackConfig.getPath(),
       LoopBackConfig.getApiVersion(),
       'Jobs',
       jobId,
       'contacts',
       contact.id
-    ].join('/');
-
-    let headers: Headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-
-    let request: Request = new Request({
-      headers : headers,
-      method  : method,
-      url     : url,
-      //search  : Object.keys(urlParams).length > 0
-      //    ? this.searchParams.getURLSearchParams() : null,
-      body    : JSON.stringify(contact)
-    });
-
-    return <Observable<Contact>> this.http.request(request)
-        .map((res: any) => (res.text() != "" ? res.json() : {}))
-        .catch((e) => {
-          console.error(e);
-          return Observable.of(this.newContact());
-        });
-
+    ].join('/'), undefined, undefined, { contact }).map((data: Contact) => Contact.factory(data));
   }
 
+  getContacts(jobId: any) : Observable<Contact[]> {
+    return this.contactApi.request('GET', [
+      LoopBackConfig.getPath(),
+      LoopBackConfig.getApiVersion(),
+      'Jobs',
+      jobId,
+      'contacts'
+    ].join('/'), undefined, undefined, undefined)
+        .map((datum: Contact[]) => datum.map((data: Contact) => this.makeDeep(Contact.factory(data))));
+  }
 }

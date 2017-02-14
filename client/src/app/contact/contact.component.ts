@@ -21,6 +21,7 @@ export class ContactComponent implements OnInit {
   constructor(private jobService: JobService, private contactService: ContactService, private route: ActivatedRoute) { }
 
   allJobs:Job[] = [];
+  displayJobs: boolean = false;
 
   ngOnInit() {
    //Populate the company/title dropdown
@@ -28,6 +29,7 @@ export class ContactComponent implements OnInit {
       this.jobService.findAll()
           .subscribe(jobs => this.allJobs = jobs);
       this.isEditable = true;
+      this.displayJobs = true;
     }
   }
 

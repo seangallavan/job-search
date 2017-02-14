@@ -1,4 +1,4 @@
-<!--<div class="container mxy-2">-->
+<div class="container mxy-2">
   <div class="row">
     <div class="col">
       <div style="text-align: right">
@@ -8,7 +8,7 @@
     </div>
   </div>
   <!--&lt;!&ndash;<form ngSubmit="save()">&ndash;&gt;-->
-    <div *ngIf="!jobId" class="row">
+    <div *ngIf="displayJobs" class="row">
       <div class="col form-group">
         <small><label for="jobId" class="mb-0">Job Opportunity</label></small>
         <select class="form-control form-control-sm" [(ngModel)]="jobId" id="jobId" name="jobId" [disabled]="!isEditable">
@@ -57,4 +57,4 @@
       </div>
     </div>
   <!--&lt;!&ndash;</form>&ndash;&gt;-->
-<!--</div>-->
+</div>
