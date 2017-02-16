@@ -2,34 +2,23 @@
 const parse = require('csv-parse');
 const fs = require('fs');
 const csv=require('csvtojson')
-
-import * as _ from 'lodash';
+const _ = require('lodash');
 
 module.exports = function(Job) {
+
     Job['import'] = function(filename, mappings, cb) {
         const FILEPATH = __dirname + '/../../files/imports/' + filename;
 
-        let newObj = {};
-
         mappings = _.filter(mappings, mapping => mapping.source !== undefined && mapping.source !== '');
-
-
 
         csv()
             .fromFile(FILEPATH)
-            .on('json',(jsonObj)=>{
-                newObj = {};
+            .on('json',(jsonObj)=>{ //Runs once per csv line
+                let newObj = {};
                 _.each(mappings, (mapping) => {
-                    let parts = mapping.destination.split('.');
-                    let property = parts.pop();
-                    let obj = newObj;
-                    parts.forEach(part => {
-                        if(!obj[part]) {
-                            obj[part] = {};
-                            obj = obj[part];
-                        }
-                        obj[property] = jsonObj[mapping.source];
-                    });
+                    if(jsonObj[mapping.source] && jsonObj[mapping.source] !== '') {
+                        _.setWith(newObj, mapping.destination, jsonObj[mapping.source], Object);
+                    }
                 });
 
                 Job.create(newObj, (err, obj) => {
@@ -39,7 +28,7 @@ module.exports = function(Job) {
             .on('done',(error)=>{
                 cb(null, JSON.stringify({response: 'Success!'}));
             });
-    }
+    };
 
     Job.remoteMethod('import', {
         accepts: [
@@ -47,5 +36,5 @@ module.exports = function(Job) {
             {arg: 'mappings', type: '[Mapping]'}
         ],
         returns: {arg: 'jobs', type:'Job[]'}
-    })
+    });
 };

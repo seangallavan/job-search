@@ -26,6 +26,12 @@
     },
     "url": {
       "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "isActive": {
+      "type": "boolean"
     }
   },
   "validations": [],

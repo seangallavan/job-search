@@ -28,6 +28,9 @@ export class JobService {
     job.title = undefined;
     job.location = undefined;
     job.description = undefined;
+    job.url = undefined;
+    job.status = undefined;
+    job.isActive = true;
     job.company = new Company();
     job.company.name = undefined;
     job.company.description = undefined;

@@ -306,6 +306,61 @@ export class JobApi extends BaseLoopBackApi {
   }
 
   /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @param {object} data Request data.
+   *
+   *  - `filename` – `{string}` - 
+   *
+   *  - `mappings` – `{[Mapping]}` - 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * Data properties:
+   *
+   *  - `jobs` – `{Job[]}` - 
+   */
+  public import(filename: any = {}, mappings: any = {}): Observable<any> {
+    let _method: string = "POST";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Jobs/import";
+    let _routeParams: any = {
+      filename: filename
+    };
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (mappings) _urlParams.mappings = mappings;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * This method returns no data.
+   */
+  public deleteAll(): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/Jobs";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody);
+    return result;
+  }
+
+  /**
    * Creates a new instance in contacts of this model.
    *
    * @param {any} id Job id

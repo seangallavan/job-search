@@ -60,7 +60,7 @@ export class JobEditComponent implements OnInit {
     }
 
     reloadContacts() : void {
-        this.jobService.getContacts(this.job)
+        this.contactService.getContacts(this.job.id)
             .subscribe(contacts => {
                 this.contacts = contacts;
                 this.displayNewContact = false;

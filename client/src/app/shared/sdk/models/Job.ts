@@ -12,9 +12,11 @@ export interface JobInterface {
   location?: string;
   description?: string;
   url?: string;
+  status?: string;
+  isActive?: boolean;
+  id?: any;
   createdAt?: Date;
   updatedAt?: Date;
-  id?: any;
   contacts?: Contact[];
 }
 
@@ -26,9 +28,11 @@ export class Job implements JobInterface {
   location: string;
   description: string;
   url: string;
+  status: string;
+  isActive: boolean;
+  id: any;
   createdAt: Date;
   updatedAt: Date;
-  id: any;
   contacts: Contact[];
   constructor(data?: JobInterface) {
     Object.assign(this, data);
@@ -89,6 +93,18 @@ export class Job implements JobInterface {
           name: 'url',
           type: 'string'
         },
+        status: {
+          name: 'status',
+          type: 'string'
+        },
+        isActive: {
+          name: 'isActive',
+          type: 'boolean'
+        },
+        id: {
+          name: 'id',
+          type: 'any'
+        },
         createdAt: {
           name: 'createdAt',
           type: 'Date'
@@ -96,10 +112,6 @@ export class Job implements JobInterface {
         updatedAt: {
           name: 'updatedAt',
           type: 'Date'
-        },
-        id: {
-          name: 'id',
-          type: 'any'
         },
       },
       relations: {

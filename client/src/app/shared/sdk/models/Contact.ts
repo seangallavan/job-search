@@ -8,9 +8,9 @@ export interface ContactInterface {
   person?: any;
   type?: string;
   notes?: string;
+  id?: any;
   createdAt?: Date;
   updatedAt?: Date;
-  id?: any;
   jobId?: any;
   job?: Job;
 }
@@ -19,9 +19,9 @@ export class Contact implements ContactInterface {
   person: any;
   type: string;
   notes: string;
+  id: any;
   createdAt: Date;
   updatedAt: Date;
-  id: any;
   jobId: any;
   job: Job;
   constructor(data?: ContactInterface) {
@@ -67,6 +67,10 @@ export class Contact implements ContactInterface {
           name: 'notes',
           type: 'string'
         },
+        id: {
+          name: 'id',
+          type: 'any'
+        },
         createdAt: {
           name: 'createdAt',
           type: 'Date'
@@ -74,10 +78,6 @@ export class Contact implements ContactInterface {
         updatedAt: {
           name: 'updatedAt',
           type: 'Date'
-        },
-        id: {
-          name: 'id',
-          type: 'any'
         },
         jobId: {
           name: 'jobId',

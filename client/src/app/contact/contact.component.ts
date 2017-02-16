@@ -27,7 +27,12 @@ export class ContactComponent implements OnInit {
    //Populate the company/title dropdown
     if(!this.jobId) {
       this.jobService.findAll()
-          .subscribe(jobs => this.allJobs = jobs);
+        .map((datum: Job[]) => datum.map((data: Job) => this.allJobs.push(this.jobService.makeDeep(Job.factory(data)))))
+        .subscribe();
+
+          //.map(job => this.jobService.makeDeep(job))
+          //.subscribe(job => this.allJobs.push(job));
+    //.subscribe(jobs => this.allJobs = jobs);
       this.isEditable = true;
       this.displayJobs = true;
     }
