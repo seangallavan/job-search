@@ -17,6 +17,9 @@ module.exports = function(Job) {
                 let newObj = {};
                 _.each(mappings, (mapping) => {
                     if(jsonObj[mapping.source] && jsonObj[mapping.source] !== '') {
+                        if(jsonObj[mapping.source].startsWith('#') && jsonObj[mapping.source].endsWith('#')) {
+                            jsonObj[mapping.source] = jsonObj[mapping.source].substring(1, jsonObj[mapping.source].length - 1);
+                        }
                         _.setWith(newObj, mapping.destination, jsonObj[mapping.source], Object);
                     }
                 });
