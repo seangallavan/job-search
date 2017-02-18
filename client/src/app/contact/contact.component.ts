@@ -7,6 +7,8 @@ import { ContactService } from '../contact.service';
 import { Job } from '../shared/sdk/models/Job'
 import { JobService } from '../job.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'contact',
   templateUrl: './contact.component.html',
@@ -25,10 +27,19 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
    //Populate the company/title dropdown
+console.log('ngOnInit()');
+console.log('this.jobId', this.jobId);
     if(!this.jobId) {
       this.jobService.findAll()
         .map((datum: Job[]) => datum.map((data: Job) => this.allJobs.push(this.jobService.makeDeep(Job.factory(data)))))
-        .subscribe();
+        .subscribe(() => {
+          this.allJobs.sort(function(a: Job,b: Job) : number {
+                if ( a.company.name < b.company.name )
+                  return -1;
+                if ( a.company.name > b.company.name )
+                  return 1;
+                return 0;
+              })});
 
           //.map(job => this.jobService.makeDeep(job))
           //.subscribe(job => this.allJobs.push(job));

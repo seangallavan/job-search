@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SDKBrowserModule } from './shared/sdk/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AgGridModule} from "ag-grid-ng2/main";
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,9 @@ import {AgGridModule} from "ag-grid-ng2/main";
     AppRoutingModule,
     SDKBrowserModule.forRoot(),
     NgbModule.forRoot(),
-    AgGridModule.withComponents(
-        [
-        ]),
+    AgGridModule.withComponents([]),
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [ JobService, ContactService, ImportService ],
   bootstrap: [AppComponent]

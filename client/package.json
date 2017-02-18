@@ -13,8 +13,6 @@
   },
   "private": true,
   "dependencies": {
-    "ag-grid": "7.2.x",
-    "ag-grid-ng2": "7.2.x",
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
@@ -26,6 +24,9 @@
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.20",
     "@types/lodash": "^4.14.52",
     "@types/node": "^6.0.62",
+    "ag-grid": "7.2.x",
+    "ag-grid-ng2": "7.2.x",
+    "angular2-froala-wysiwyg": "^2.4.2-2",
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",
     "ng2-file-upload": "^1.2.0",
