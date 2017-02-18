@@ -46,14 +46,27 @@
     <div class="row">
       <div class="col form-group">
         <small><label for="notes" class="mb-0">Notes</label></small>
-                <textarea [(ngModel)]="contactInstance.notes" id="notes" name="notes" type="text" rows="10"
-                          placeholder="Notes" class="form-control form-control-sm" [disabled]="!isEditable"></textarea>
+        <ckeditor
+                [(ngModel)]="contactInstance.notes"
+                [config]="{uiColor: '#99000', toolbarGroups: [{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }, { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] }]}"
+                debounce="500">
+        </ckeditor>
+             <!--<textarea [(ngModel)]="contactInstance.notes" id="notes" name="notes" type="text" rows="10"-->
+                          <!--placeholder="Notes" class="form-control form-control-sm" [disabled]="!isEditable"></textarea>-->
       </div>
     </div>
 
-    <div class="row">
-      <div class="col form-group">
+    <div class="row justify-content-between">
+      <div class="col-4 form-group">
         <button type="submit" *ngIf="isEditable" (click)="save()" class="btn btn-primary btn-sm">Save</button>
+      </div>
+
+      <div class="col" style="text-align: right"><span class="form-control-static mr-2">created at:</span></div>
+      <div class="col-4 form-group form-inline">
+
+        <!--<input class="form-control form-control-sm" name="createdAt" [(ngModel)]="contactInstance.createdAt" type="date" />-->
+        <my-date-picker [options]="myDatePickerOptions" [(ngModel)]="createdAtDate"
+                        (dateChanged)="onCreatedAtDateChanged($event)"></my-date-picker>
       </div>
     </div>
   <!--&lt;!&ndash;</form>&ndash;&gt;-->

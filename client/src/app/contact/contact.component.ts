@@ -8,6 +8,7 @@ import { Job } from '../shared/sdk/models/Job'
 import { JobService } from '../job.service';
 
 import * as _ from 'lodash';
+import {IMyOptions, IMyDateModel} from 'mydatepicker';
 
 @Component({
   selector: 'contact',
@@ -24,11 +25,22 @@ export class ContactComponent implements OnInit {
 
   allJobs:Job[] = [];
   displayJobs: boolean = false;
+  createdAtDate;
 
   ngOnInit() {
-   //Populate the company/title dropdown
-console.log('ngOnInit()');
-console.log('this.jobId', this.jobId);
+    //Setup createdAtDate
+    let date = new Date(this.contactInstance.createdAt);
+    this.createdAtDate = {
+      //myDate: {
+        date: {
+          year: date.getFullYear(),
+          month: date.getMonth() + 1,
+          day: date.getDate()
+        }
+      //}
+    };
+
+    //Populate the company/title dropdown
     if(!this.jobId) {
       this.jobService.findAll()
         .map((datum: Job[]) => datum.map((data: Job) => this.allJobs.push(this.jobService.makeDeep(Job.factory(data)))))
@@ -40,13 +52,14 @@ console.log('this.jobId', this.jobId);
                   return 1;
                 return 0;
               })});
-
-          //.map(job => this.jobService.makeDeep(job))
-          //.subscribe(job => this.allJobs.push(job));
     //.subscribe(jobs => this.allJobs = jobs);
       this.isEditable = true;
       this.displayJobs = true;
     }
+  }
+
+  onCreatedAtDateChanged(event: IMyDateModel) : void {
+    this.contactInstance.createdAt = event.jsdate;
   }
 
   edit() {

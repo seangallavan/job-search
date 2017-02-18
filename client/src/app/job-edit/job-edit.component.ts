@@ -19,18 +19,12 @@ export class JobEditComponent implements OnInit {
     isEditable: boolean;
     displayNewContact: boolean = false;
     displayNewContactButton: boolean = false;
-    editorOptions : Object = {
-        heightMin: 300,
-        toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize', '|', 'specialCharacters', 'color', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'clearFormatting', 'html']
-    };
 
   constructor(private jobService: JobService, private contactService: ContactService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-console.log('ngOnInit');
       this.route.params
         .switchMap((params: Params) => {
-console.log('params["id"]', params['id']);
               if(params['id']) {
                 this.isEditable = false;
                 this.displayNewContactButton = true;
@@ -42,13 +36,10 @@ console.log('params["id"]', params['id']);
           }
         })
         .subscribe(jobInstance => {
- console.log('ngOnInit subscribe for jobInstance');
               this.job = this.jobService.makeDeep(jobInstance);
- console.log('this.job', this.job);
               if(this.job.id) {
                 this.contactService.getContacts(this.job.id)
                     .subscribe(contacts => {
- console.log('ngOnInit getContacts', contacts);
                         this.contacts = contacts;
                     });
             }
@@ -76,10 +67,8 @@ console.log('params["id"]', params['id']);
     }
 
     reloadContacts() : void {
-console.log('reloadContents()');
         this.contactService.getContacts(this.job.id)
             .subscribe(contacts => {
-console.log('reloadContents() subscribe contacts', contacts);
                 this.contacts = contacts;
                 this.displayNewContact = false;
                 this.displayNewContactButton = true;

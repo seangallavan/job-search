@@ -18,6 +18,7 @@ export class ContactService {
   newContact() : Contact {
     let contact = new Contact();
     contact.person = new Person();
+    contact.createdAt = new Date();
 
     return contact;
   }

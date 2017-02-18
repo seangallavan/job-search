@@ -110,10 +110,11 @@
     <div class="row">
         <div class="col form-group">
             <small><label class="mb-0">Description</label></small>
-            <div [froalaEditor]="editorOptions"  [(froalaModel)]="job.description" name="description" id="description"></div>
-
-            <!--<textarea [(ngModel)]="job.description" id="description" name="description" type="text" rows="10"-->
-                      <!--placeholder="Description" class="form-control form-control-sm" [disabled]="!isEditable"></textarea>-->
+            <ckeditor
+                    [(ngModel)]="job.description"
+                    [config]="{uiColor: '#99000', toolbarGroups: [{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] }, { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] }]}"
+                    debounce="500">
+            </ckeditor>
         </div>
     </div>
 

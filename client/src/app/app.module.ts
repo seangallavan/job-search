@@ -19,7 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { SDKBrowserModule } from './shared/sdk/index';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AgGridModule} from "ag-grid-ng2/main";
-import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
     SDKBrowserModule.forRoot(),
     NgbModule.forRoot(),
     AgGridModule.withComponents([]),
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot()
+    CKEditorModule,
+    MyDatePickerModule
   ],
   providers: [ JobService, ContactService, ImportService ],
   bootstrap: [AppComponent]
