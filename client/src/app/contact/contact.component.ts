@@ -27,6 +27,12 @@ export class ContactComponent implements OnInit {
   displayJobs: boolean = false;
   createdAtDate;
 
+  private myDatePickerOptions: IMyOptions = {
+    alignSelectorRight: true,
+    width: '300px',
+    dateFormat: 'dd.mm.yyyy'
+  };
+
   ngOnInit() {
     //Setup createdAtDate
     let date = new Date(this.contactInstance.createdAt);
