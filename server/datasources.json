@@ -6,7 +6,7 @@
   "mongodb": {
     "host": "",
     "port": 0,
-    "url": "",
+    "url": "${MONGODB_URI}",
     "database": "jobs",
     "password": "",
     "name": "mongodb",

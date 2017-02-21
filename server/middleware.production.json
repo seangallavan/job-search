@@ -1,0 +1,11 @@
+{
+  "files": {
+    "loopback#static": {
+      "params": "$!../client"
+    }
+  },
+
+  "final:after": {
+    "strong-error-handler": { }
+  }
+}

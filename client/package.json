@@ -9,7 +9,8 @@
     "lint": "tslint \"src/**/*.ts\" --project src/tsconfig.json --type-check && tslint \"e2e/**/*.ts\" --project e2e/tsconfig.json --type-check",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "build:dist": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
@@ -26,10 +27,9 @@
     "@types/node": "^6.0.62",
     "ag-grid": "7.2.x",
     "ag-grid-ng2": "7.2.x",
-    "ckeditor": "^4.6.2",
+    "angular-cli": "1.0.0-beta.26",
     "core-js": "^2.4.1",
     "lodash": "^4.17.4",
-    "mydatepicker": "^1.6.16",
     "ng2-ckeditor": "^1.1.5",
     "ng2-file-upload": "^1.2.0",
     "rxjs": "^5.0.1",
@@ -41,7 +41,6 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "@types/socket.io-client": "^1.4.29",
-    "angular-cli": "1.0.0-beta.26",
     "codelyzer": "~2.0.0-beta.1",
     "jasmine-core": "2.5.2",
     "jasmine-spec-reporter": "2.5.0",
@@ -54,5 +53,8 @@
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
     "typescript": "~2.0.3"
-  }
-}
+  },
+  "engines": {
+    "node": "7.4.0",
+    "npm": "4.1.2"
+  }}

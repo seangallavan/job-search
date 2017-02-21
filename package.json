@@ -6,7 +6,9 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
-    "build:sdk": "./node_modules/.bin/lb-sdk server/server.js ./client/src/app/shared/sdk"
+    "build:sdk": "./node_modules/.bin/lb-sdk server/server.js ./client/src/app/shared/sdk",
+    "run:local": "nodemon server/server.js --exec babel-node --presets es2015,stage-2",
+    "postinstall": "cd client; ng build --aot -prod"
   },
   "dependencies": {
     "compression": "^1.0.3",
