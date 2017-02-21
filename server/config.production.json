@@ -1,6 +1,6 @@
 {
   "restApiRoot": "/api",
-  "host": "0.0.0.0",
+  "host": "${JOBSEARCH_HOST}",
   "port": "${JOBSEARCH_PORT}",
   "remoting": {
     "context": false,
