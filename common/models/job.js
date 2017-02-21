@@ -1,7 +1,5 @@
 'use strict';
-const parse = require('csv-parse');
 const fs = require('fs');
-const csv=require('csvtojson')
 const _ = require('lodash');
 
 module.exports = function(Job) {
