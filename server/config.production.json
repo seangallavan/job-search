@@ -1,6 +1,6 @@
 {
   "restApiRoot": "/api",
-  "host": "jobsearchdemo.herokuapp.com/",
+  "host": "jobsearchdemo.herokuapp.com",
   "port": 80,
   "remoting": {
     "context": false,
