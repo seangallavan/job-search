@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.26",
+    "version": "1.0.0-beta.32.3",
     "name": "client"
   },
   "apps": [
@@ -13,15 +13,15 @@
       ],
       "index": "index.html",
       "main": "main.ts",
+      "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
       "prefix": "app",
-      "mobile": false,
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.css",
-        "styles.css",
         "../node_modules/ag-grid/dist/styles/ag-grid.css",
-        "../node_modules/ag-grid/dist/styles/theme-fresh.css"
+        "../node_modules/ag-grid/dist/styles/theme-fresh.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
@@ -29,8 +29,8 @@
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "../node_modules/jquery/dist/jquery.min.js"
       ],
+      "environmentSource": "environments/environment.ts",
       "environments": {
-        "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
       }
@@ -41,6 +41,16 @@
       "config": "./protractor.conf.js"
     }
   },
+  "lint": [
+    {
+      "files": "src/**/*.ts",
+      "project": "src/tsconfig.json"
+    },
+    {
+      "files": "e2e/**/*.ts",
+      "project": "e2e/tsconfig.json"
+    }
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"
@@ -48,18 +58,6 @@
   },
   "defaults": {
     "styleExt": "css",
-    "prefixInterfaces": false,
-    "inline": {
-      "style": false,
-      "template": false
-    },
-    "spec": {
-      "class": false,
-      "component": true,
-      "directive": true,
-      "module": false,
-      "pipe": true,
-      "service": true
-    }
+    "component": {}
   }
 }

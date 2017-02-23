@@ -7,7 +7,7 @@
     "start": "node .",
     "posttest": "npm run lint && nsp check",
     "build:sdk": "./node_modules/.bin/lb-sdk server/server.js ./client/src/app/shared/sdk",
-    "run:local": "nodemon server/server.js --exec babel-node --presets es2015,stage-2",
+    "run:local": "MONGODB_URI=mongodb://localhost/jobs nodemon server/server.js --exec babel-node --presets es2015,stage-2",
     "preinstall": "cd client; npm install; ./node_modules/angular-cli/bin/ng build --aot -prod",
     "deploy": "git push origin master && git push heroku master"
   },
